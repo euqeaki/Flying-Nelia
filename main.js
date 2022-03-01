@@ -17,7 +17,7 @@ for(const file of commandfiles){
 
 client.once('ready', () =>{ 
     console.log('Flying Nelia is Online!');
-    client.user.setActivity('-hello | -yezzir | -react',{type: "WATCHING"}).catch(console.error)
+    client.user.setActivity('-yezzir | -react | -shish',{type: "PLAYING"}).catch(console.error)
 });
 
 
@@ -51,6 +51,12 @@ client.on('message', msg =>{
     }
 })
 
+client.on('message', msg =>{
+    if (msg.content === 'i love you'){
+        msg.reply('i love you too ❤️❤️');
+    }
+})
+
 client.on('message', message =>{
 
     let args = message.content.substring(prefix.length).split(" ");
@@ -67,13 +73,14 @@ client.on('message', message =>{
     const args = message.content.slice(prefix.length).split(/ +/);
     const command = args.shift().toLowerCase();
 
-    if(command === 'hello'){
-        message.channel.send('hello!!');
-    }
-
     if(command === 'yezzir'){
         client.commands.get('yezzir').execute(message, args);
     }
+
+    if (command === 'shish') {
+        client.commands.get('shish').execute(message, args);
+    }
+
 })
 
 
